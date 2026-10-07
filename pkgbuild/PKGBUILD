@@ -40,8 +40,8 @@ package() {
   fi
   # 如果还是找不到，只能写死报错提醒
   if [ -z "$_exec_bin" ] || [ "$_exec_bin" = "$pkgdir/usr/lib/neko/" ]; then
-      echo "警告：无法自动定位主程序，将在打包后出错。请手动检查 squashfs-root 目录！"
-      _exec_bin="AppRun"
+      echo "错误：无法自动定位主程序。请手动检查 squashfs-root 目录！" >&2
+      return 1
   fi
 
   # 4. 创建启动脚本
@@ -59,7 +59,7 @@ EOF
   
   if [ -n "$_desktop_file" ]; then
       # 如果 AppImage 自带 desktop 文件，替换其 Exec 路径并复制
-      sed -i "s|Exec=.*|Exec=n.e.k.o|g" "$_desktop_file"
+      sed -i -e "s|Exec=.*|Exec=n.e.k.o|g" -e "s|^Icon=.*|Icon=neko-bin|" "$_desktop_file"
       install -Dm644 "$_desktop_file" "$pkgdir/usr/share/applications/$pkgname.desktop"
   else
       # 如果没找到，沿用你之前的写法
