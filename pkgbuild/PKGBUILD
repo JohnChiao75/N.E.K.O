@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('gtk3' 'nss' 'libxtst' 'libsecret' 'xdg-utils')
 makedepends=()
 # 注意：上游文件名写的是 x86，这里照抄
-source=("$pkgname-$pkgver.AppImage::https://github.com/Project-N-E-K-O/N.E.K.O/releases/download/v$pkgver/N.E.K.O_v${pkgver}_x86_linux.AppImage")
+source=("$pkgname-$pkgver.AppImage::https://github.com/Project-N-E-K-O/N.E.K.O/releases/download/v0.9.0/N.E.K.O_v${pkgver}_x86_linux.AppImage")
 # 请将 SKIP 替换为你刚刚在 PowerShell 里算出来的真实哈希
 sha256sums=('8d8c9c3b79ac2b35db56ed0bbdf58b901b2ec980cb2d318b6511133c763fa618')
 
